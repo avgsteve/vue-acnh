@@ -9,13 +9,11 @@
 <script  >
 import { defineComponent } from 'vue'
 import Toolbar from '../../components/Toolbar/Toolbar.vue'
-import IndexBar from '../../components/IndexBar/IndexBar.vue'
 import SearchResultTable from './SearchResultTable.vue'
 export default defineComponent({
   name: 'searchPage',
   components: {
     Toolbar,
-    IndexBar,
     SearchResultTable
   },
   setup: () => {}
