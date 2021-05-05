@@ -234,7 +234,7 @@ export default defineComponent({
   mounted() {},
   beforeUnmount() {},
   methods: {
-    getDataOfSelectedTag() {
+    getDataOfSelectedTag(selectedTag) {
       // console.log('data_selectedTag已更新: ', selectedTag)
       const selectedCategory = this.data_selectedCategory
       // console.log({ selectedCategory, selectedTag })

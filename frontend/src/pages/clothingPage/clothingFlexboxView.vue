@@ -42,7 +42,7 @@
     </div>
   </div>
 </template>
-<script  >
+<script>
 import { Toast } from 'vant'
 import { computed, defineComponent, reactive, ref, watch } from 'vue'
 import clothingFlexboxViewControl from './clothingFlexboxViewControl.vue'
@@ -56,7 +56,7 @@ export default defineComponent({
     AddToListBtn
   },
   setup() {
-    const scaleValue: any = ref(100)
+    const scaleValue = ref(100)
     const scale = scaleValue.value / 100
 
     let flexboxStyle = reactive({
@@ -74,7 +74,7 @@ export default defineComponent({
       scaleValue.value = changedScaleValue
     }
 
-    watch(scaleValue, (newValue: number, oldValue: number) => {
+    watch(scaleValue, (newValue, oldValue) => {
       // console.log('flexboxStyle', flexboxStyle)
       console.log('newValue of scale:', newValue)
       let scale = newValue / 100
@@ -108,7 +108,7 @@ export default defineComponent({
       default: []
     }
   },
-  data(  ) {
+  data() {
     return {
       filterText: ''
     }
@@ -119,15 +119,9 @@ export default defineComponent({
         `languageSetting/${LANGUAGE.GET_TRANSLATION_DATA_FOR_RECIPES}`
       ]
 
-      // console.log('store裡面的clothingFilterString: ', clothingFilterString)
-
-      interface DataObj {
-        name: string
-        stringForFilter: string
-      }
       // let filteredResult = []
       //
-      let clothingData: Array<DataObj> = Array.from(this.prop_selectedRecipesData)
+      let clothingData = Array.from(this.prop_selectedRecipesData)
       // console.log('clothingData:', clothingData)
       // console.log('clothingFilterString:', clothingFilterString)
 

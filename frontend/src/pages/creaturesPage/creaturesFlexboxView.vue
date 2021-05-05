@@ -50,7 +50,7 @@ export default defineComponent({
     AddToListBtn
   },
   setup() {
-    const scaleValue: any = ref(100)
+    const scaleValue = ref(100)
     const scale = scaleValue.value / 100
 
     let flexboxStyle = reactive({
@@ -67,7 +67,7 @@ export default defineComponent({
       scaleValue.value = changedScaleValue
     }
 
-    watch(scaleValue, (newValue: number, oldValue: number) => {
+    watch(scaleValue, (newValue, oldValue) => {
       let scale = newValue / 100
       flexboxStyle.margin = `${8 * scale}px ${10 * scale}px ${6 * scale}px`
       flexboxImageStyle.width = `${7 * scale}rem`
@@ -98,7 +98,7 @@ export default defineComponent({
       default: []
     }
   },
-  data(  ) {
+  data() {
     return {
       filterText: ''
     }
@@ -109,12 +109,7 @@ export default defineComponent({
         `languageSetting/${LANGUAGE.GET_TRANSLATION_DATA_FOR_CREATURES}`
       ]
 
-      interface DataObj {
-        name: string
-        stringForFilter: string
-      }
-      // let filteredResult = []
-      let creaturesData: Array<DataObj> = Array.from(this.prop_selectedCreatureData)
+      let creaturesData = Array.from(this.prop_selectedCreatureData)
       for (let i = 0; i < creaturesData.length; i++) {
         const item = creaturesData[i]
         const itemName = item.name.split("'").join('')

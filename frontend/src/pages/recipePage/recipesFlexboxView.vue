@@ -55,7 +55,7 @@ export default defineComponent({
     AddToListBtn
   },
   setup() {
-    const scaleValue: any = ref(100)
+    const scaleValue = ref(100)
     const scale = scaleValue.value / 100
 
     let flexboxStyle = reactive({
@@ -73,7 +73,7 @@ export default defineComponent({
       scaleValue.value = changedScaleValue
     }
 
-    watch(scaleValue, (newValue: number, oldValue: number) => {
+    watch(scaleValue, (newValue, oldValue) => {
       // console.log('flexboxStyle', flexboxStyle)
       console.log('newValue of scale:', newValue)
       let scale = newValue / 100
@@ -107,7 +107,7 @@ export default defineComponent({
       default: []
     }
   },
-  data(  ) {
+  data() {
     return {
       filterText: ''
     }
@@ -118,14 +118,7 @@ export default defineComponent({
         `languageSetting/${LANGUAGE.GET_TRANSLATION_DATA_FOR_RECIPES}`
       ]
 
-      // console.log('store裡面的recipesFilterString: ', recipesFilterString)
-
-      interface DataObj {
-        name: string
-        stringForFilter: string
-      }
-
-      let recipesData: Array<DataObj> = Array.from(this.prop_selectedRecipesData)
+      let recipesData = Array.from(this.prop_selectedRecipesData)
 
       for (let i = 0; i < recipesData.length; i++) {
         const item = recipesData[i]

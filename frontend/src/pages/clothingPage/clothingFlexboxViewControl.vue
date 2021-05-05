@@ -31,7 +31,7 @@
     </div>
   </div>
 </template>
-<script  >
+<script>
 import { Toast } from 'vant'
 import { defineComponent } from 'vue'
 export default defineComponent({
