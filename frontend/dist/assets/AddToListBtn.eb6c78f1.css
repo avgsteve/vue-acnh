@@ -1,0 +1,1 @@
+.add-to-list-btn{position:absolute;top:0;right:0;height:2rem;width:2rem;display:flex;justify-content:center;align-items:center;border-radius:7px}.add-to-list-btn.no_absolutePosition{position:unset}.add-to-list-btn-icon{font-size:1.2rem;transition:all .2s ease-out;color:rgba(128,128,128,.568)}.add-to-list-btn-icon:hover{font-size:1.8rem;color:rgba(60,97,219,.877)}
