@@ -1,0 +1,34 @@
+GET https://ticketing.com/api/users/currentuser
+
+###
+
+POST ticketing.com/api/users/signup HTTP/1.1
+content-type: application/json
+# 這裡要留一行空格
+
+{
+    "email" : "steve.leng10@gmail.com",
+    "password": "123123123"
+}
+
+###
+
+POST ticketing.com/api/users/signin HTTP/1.1
+content-type: application/json
+# 這裡要留一行空格
+
+{
+    "email" : "steve.leng10@gmail.com",
+    "password": "123123123"
+}
+
+###
+
+// Get Current User
+GET ticketing.com/api/users/currentuser HTTP/1.1
+
+###
+
+POST ticketing.com/api/users/signout HTTP/1.1
+
+

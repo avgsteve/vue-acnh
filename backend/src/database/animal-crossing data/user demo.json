@@ -1,0 +1,32 @@
+[{
+  "_id": {
+    "$oid": "60846e05de5acd392cd11aa8"
+  },
+  "oauthAccounts": {
+    "google": {
+      "registered": true,
+      "email": "steve.leng@gmail.com",
+      "picture": "https://lh3.googleusercontent.com/a-/AOh14GhJw9Xlcwt5u4Gl6PnA0ocd0XO6sSJB3mASxXBTl9I=s96-c",
+      "name": "Steve Leng"
+    },
+    "facebook": {
+      "registered": false
+    }
+  },
+  "friends": [],
+  "villagers": [],
+  "hasSetPassword": false,
+  "list": [],
+  "following": [],
+  "followers": [],
+  "profilePic": "/images/profilePic.jpeg",
+  "role": "user",
+  "email": "steve.leng@gmail.com",
+  "createdAt": {
+    "$date": "2021-04-24T19:14:13.644Z"
+  },
+  "updatedAt": {
+    "$date": "2021-04-24T19:14:13.644Z"
+  },
+  "__v": 0
+}]
