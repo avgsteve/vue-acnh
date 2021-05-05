@@ -36,7 +36,7 @@
     </ItemCardBody>
   </ItemCard>
 </template>
-<script lang="ts">
+<script>
 import { defineComponent } from 'vue'
 import LANGUAGE from './../../../store/modules/languageSetting/languageSettingTypes'
 import ItemCard from './../../components/ItemCard/ItemCard.vue'
@@ -61,7 +61,7 @@ export default defineComponent({
       default: null
     }
   },
-  data(dataObj: any) {
+  data() {
     const currentLocale = this.$i18n.locale
     return {
       dataObj: null,
@@ -130,16 +130,18 @@ export default defineComponent({
       // 開啟對話框
       this.data_cardSettingAndData.showCard = true
 
-      this.axios.get(`/api/ac/items/detailed-data?name=${itemName}`).then((response) => {
-        const data = response.data
-        // console.log('item fetched. data: ', data)
-        data.idForTranslation = null
-        this.data_cardSettingAndData.data = data
+      this.axios
+        .get(`/${import.meta.env.VITE_API_ENDPOINT}/ac/items/detailed-data?name=${itemName}`)
+        .then((response) => {
+          const data = response.data
+          // console.log('item fetched. data: ', data)
+          data.idForTranslation = null
+          this.data_cardSettingAndData.data = data
 
-        setTimeout(() => {
-          this.data_cardSettingAndData.setting.showLoader = false
-        }, 200)
-      })
+          setTimeout(() => {
+            this.data_cardSettingAndData.setting.showLoader = false
+          }, 200)
+        })
     }
   }
 })

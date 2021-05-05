@@ -23,7 +23,7 @@
     </div>
   </div>
 </template>
-<script lang="ts">
+<script  >
 import { defineComponent } from 'vue'
 export default defineComponent({
   name: 'ItemCategories',
@@ -42,7 +42,7 @@ export default defineComponent({
       default: []
     }
   },
-  data(dataObj: any) {
+  data() {
     return {}
   },
   computed: {},

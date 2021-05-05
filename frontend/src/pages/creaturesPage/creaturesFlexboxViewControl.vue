@@ -31,7 +31,7 @@
     </div>
   </div>
 </template>
-<script lang="ts">
+<script  >
 import { Toast } from 'vant'
 import { defineComponent } from 'vue'
 export default defineComponent({
@@ -42,7 +42,7 @@ export default defineComponent({
     prop1: { type: Number },
     prop2: { type: String }
   },
-  data(dataObj: any) {
+  data() {
     return {
       scaleValue: 100,
       filterText: '',
@@ -74,7 +74,7 @@ export default defineComponent({
       Toast(text + ':' + scaleValue + '%')
       this.$emit('scaleValueChanged', scaleValue)
     },
-    onFocus(eventObj): void {
+    onFocus(eventObj) {
       console.log('eventObj: ', eventObj)
       const target = document.querySelector('#filterInputField')
       target.classList.add('active')

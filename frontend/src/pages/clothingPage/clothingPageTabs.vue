@@ -10,7 +10,7 @@
     </van-tab>
   </van-tabs>
 </template>
-<script lang="ts">
+<script  >
 import { defineComponent } from 'vue'
 export default defineComponent({
   name: 'CreaturePageTabs',
@@ -20,7 +20,7 @@ export default defineComponent({
     prop1: { type: Number },
     prop_categories: { type: Array }
   },
-  data(dataObj: any) {
+  data() {
     return {
       dataObj: null
     }

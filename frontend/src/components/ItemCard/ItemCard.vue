@@ -32,7 +32,7 @@ this.$t(`items.terms.detail`)
 -->
 
 
-<script lang="ts">
+<script  >
 import {
   defineComponent
   // ref
@@ -58,7 +58,7 @@ export default defineComponent({
       cardContentIsLoading: true
     }
   },
-  data(dataObj: any) {
+  data() {
     return {
       dataObj: null,
       closeOnOverlay: true

@@ -14,7 +14,7 @@
     </van-button>
   </div>
 </template>
-<script lang="ts">
+<script>
 import { defineComponent } from 'vue'
 import SectionComponent from '../LAYOUT/sectionComponent.vue'
 import InputContainer from './InputForm/InputContainer.vue'
@@ -32,7 +32,7 @@ export default defineComponent({
     prop2: { type: String },
     prop_inputType: { type: String }
   },
-  data(dataObj: any) {
+  data() {
     return {
       dataObj: null,
       data_sendingAuthData: false,
@@ -68,7 +68,7 @@ export default defineComponent({
       const confirmToLogout = window.confirm(`${this.$t('ui.auth.confirmToLogout')}`)
       if (confirmToLogout) {
         axios
-          .get(`/api/auth/logout`, {
+          .get(`/${import.meta.env.VITE_API_ENDPOINT}/auth/logout`, {
             headers: {
               CLIENT_REQ: 'Vue.js AUTH PAGE: CHECK IF USER HAS LOGGED IN'
             }

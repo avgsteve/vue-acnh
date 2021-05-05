@@ -342,21 +342,23 @@ export default defineComponent({
       // console.warn('id: ', id)
       // 開啟對話框
 
-      this.axios.get(`/api/ac/items/detailed-data?name=${itemClicked}`).then((response) => {
-        // 讀取完資料之後再開啟ItemCard彈窗
-        this.data_cardSettingAndData.showCard = true
-        const data = response.data
-        // console.log('item fetched. data: ', data)
-        data.idForTranslation = id
+      this.axios
+        .get(`/${import.meta.env.VITE_API_ENDPOINT}/ac/items/detailed-data?name=${itemClicked}`)
+        .then((response) => {
+          // 讀取完資料之後再開啟ItemCard彈窗
+          this.data_cardSettingAndData.showCard = true
+          const data = response.data
+          // console.log('item fetched. data: ', data)
+          data.idForTranslation = id
 
-        // 將取得的資料寫入 data_cardSettingAndData ，作為傳入 ItemCard 的 prop_cardData 屬性的資料
+          // 將取得的資料寫入 data_cardSettingAndData ，作為傳入 ItemCard 的 prop_cardData 屬性的資料
 
-        this.data_cardSettingAndData.data = data
+          this.data_cardSettingAndData.data = data
 
-        setTimeout(() => {
-          this.data_cardSettingAndData.setting.showLoader = false
-        }, 400)
-      })
+          setTimeout(() => {
+            this.data_cardSettingAndData.setting.showLoader = false
+          }, 400)
+        })
     }
   }
 })

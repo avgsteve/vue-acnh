@@ -11,7 +11,7 @@
     />
   </div>
 </template>
-<script lang="ts">
+<script  >
 import { defineComponent, computed, watch } from 'vue'
 import { Toast } from 'vant'
 import { useStore, mapActions } from 'vuex'
@@ -41,7 +41,7 @@ export default defineComponent({
   },
 
   props: ['prop_languageMenuToggle'],
-  data(): { dataObj: any; data_optionToggle: boolean } {
+  data() {
     return {
       dataObj: null,
       data_optionToggle: this.prop_languageMenuToggle
@@ -65,21 +65,9 @@ export default defineComponent({
       const translatedTextArray = []
       const languageOptionsList = []
 
-      // const locale = this.$i18n.locale
-      // console.log('  === computed 裡面的 languageOptionsList() ===  ')
-
-      // console.log('useI18n目前設定的語言 : ', locale)
-      // 附註: 將語言資料assign到 this.$i18n.locale 就可以改變i18n在global環境中的語言設定
-
-      // console.log('目前 store 裡的語言選項: ', languageOptionsInStore)
-      // ["en", "zhTW", "zhCN"]
-
-      // console.log('目前 store 裡的global語言設定:', this.currentLangueFromStore) // ex: zhTW
-
       // 透過i18n要取得的文字內容，內容會依照目前 i18n 的global語言設定，輸出不同語言的 "對應翻譯文字"
       for (let i = 0; i < languageOptionsInStore.length; i++) {
         // 1. ↑ loop 出 ["en", "zhTW", "zhCN"]
-
         // 2. ↓ 透過 i18n 取得目前語言的 "對應翻譯文字"
         let dynamicLanguageOptionText = this.$t(`language.options.${languageOptionsInStore[i]}`)
         // console.log('目前語言的 "對應翻譯文字": ', dynamicLanguageOptionText)

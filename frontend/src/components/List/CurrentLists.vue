@@ -56,7 +56,7 @@
     </van-dialog>
   </div>
 </template>
-<script lang="ts">
+<script  >
 import { Toast } from 'vant'
 import { defineComponent } from 'vue'
 import LIST from './../../../store/modules/listData/listDataTypes'
@@ -71,7 +71,7 @@ export default defineComponent({
       required: true
     }
   },
-  data(dataObj: any) {
+  data() {
     return {
       data_indexOfSelectedList: '',
       data_showListSelector: false,
@@ -100,7 +100,7 @@ export default defineComponent({
       const currentLists = Array.from(createdLists[currentType])
       const options = []
       for (let i = 0; i < currentLists.length; i++) {
-        const list: any = currentLists[i]
+        const list = currentLists[i]
         const optionItem = {
           text: list.name,
           value: i
@@ -152,7 +152,7 @@ export default defineComponent({
     showAddNewListModal() {
       this.data_showAddNewListDialog = true
     },
-    confirmAddNewList(e): boolean {
+    confirmAddNewList(e) {
       this.data_showAddNewListDialog = true
       const nameOfNewList = this.data_newListName
       const existingLists = this.computed_optionsForListSelector
@@ -187,7 +187,7 @@ export default defineComponent({
       this.data_newListName = ''
       return false
     },
-    cancelAddNewList(): true {
+    cancelAddNewList() {
       // console.log('呼叫cancelAddNewList')
       Toast.fail('取消新增清單')
       this.data_newListName = ''

@@ -40,7 +40,7 @@
     <h4 v-if="data_loginMode">目前只開放Google帳號登入</h4>
   </div>
 </template>
-<script lang="ts">
+<script  >
 import { Toast } from 'vant'
 import { defineComponent } from 'vue'
 export default defineComponent({
@@ -51,7 +51,7 @@ export default defineComponent({
     prop1: { type: Number },
     prop2: { type: String }
   },
-  data(dataObj: any) {
+  data() {
     return {
       dataObj: null,
       data_email: '',

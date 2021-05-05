@@ -3,7 +3,7 @@
     <MainFunctionsContainer />
   </div>
 </template>
-<script lang="ts">
+<script  >
 import { defineComponent } from 'vue'
 import MainFunctionsContainer from './mainPage/mainPage.vue'
 

@@ -8,7 +8,7 @@
     <AuthComponent v-if="!data_checkingIfUserIsLoggedIn" />
   </Section>
 </template>
-<script lang="ts">
+<script>
 import { defineComponent } from 'vue'
 import Section from './../LAYOUT/sectionComponent.vue'
 import USER from './../../../store/modules/user/userTypes'
@@ -24,7 +24,7 @@ export default defineComponent({
     prop1: { type: Number },
     prop2: { type: String }
   },
-  data(dataObj: any) {
+  data() {
     return {
       dataObj: null,
       data_checkingIfUserIsLoggedIn: true
@@ -45,7 +45,7 @@ export default defineComponent({
 
     if (!this.computed_ifUserIsLoggedIn) {
       axios
-        .get(`/api/user/currentUser?getUserData="true"`, {
+        .get(`/${import.meta.env.VITE_API_ENDPOINT}/user/currentUser?getUserData="true"`, {
           headers: {
             CLIENT_REQ: 'Vue.js AUTH PAGE: CHECK IF USER HAS LOGGED IN'
           }

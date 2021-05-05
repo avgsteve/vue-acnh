@@ -79,7 +79,6 @@ export default defineComponent({
       '檢查環境變數: VITE_API_ENDPOINT + import.meta.env',
       `${import.meta.env.VITE_API_ENDPOINT}`
     )
-    console.log('檢查環境變數: API_ENDPOINT + process.env.API_ENDPOINT ', process.env.API_ENDPOINT)
 
     // #1 檢查客戶端瀏覽器目前的語言，並連帶設定i18n的語言設定
     let userLang = navigator.language

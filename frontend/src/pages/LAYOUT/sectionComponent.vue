@@ -9,7 +9,7 @@
     </div>
   </section>
 </template>
-<script lang="ts">
+<script  >
 import { defineComponent } from 'vue'
 export default defineComponent({
   name: 'SectionComponent',
@@ -19,7 +19,7 @@ export default defineComponent({
     props_title: { type: String, default: 'Title' },
     props_subtitle: { type: String, default: 'Title' }
   },
-  data(dataObj: any) {
+  data() {
     return {
       dataObj: null
     }

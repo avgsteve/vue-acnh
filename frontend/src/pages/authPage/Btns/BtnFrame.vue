@@ -13,7 +13,7 @@
     </div>
   </div>
 </template>
-<script lang="ts">
+<script  >
 import { defineComponent } from 'vue'
 export default defineComponent({
   name: 'BtnFrame',
@@ -24,7 +24,7 @@ export default defineComponent({
     prop_btnText: { type: String },
     prop_loadingStatus: { type: Boolean, default: false }
   },
-  data(dataObj: any) {
+  data() {
     return {
       dataObj: null,
       isLoading: false

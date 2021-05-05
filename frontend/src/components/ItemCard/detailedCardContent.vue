@@ -1,4 +1,4 @@
-<script lang="ts">
+<script  >
 import { defineComponent } from 'vue'
 import LANGUAGE from './../../../store/modules/languageSetting/languageSettingTypes'
 import AddToListBtn from './../Buttons/AddToListBtn.vue'
@@ -12,7 +12,7 @@ export default defineComponent({
       required: true
     }
   },
-  data(dataObj: any) {
+  data() {
     return {
       dataObj: null,
       active: 0,
@@ -20,7 +20,7 @@ export default defineComponent({
     }
   },
   computed: {
-    computed_itemData(): any {
+    computed_itemData() {
       let d = this.prop_cardData.data // d 表示 data
       console.log('傳進computed_itemData裡面的prop_cardData: ', d)
 

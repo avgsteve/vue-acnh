@@ -10,7 +10,7 @@
     </van-tab> -->
   </van-radio-group>
 </template>
-<script lang="ts">
+<script  >
 import { defineComponent } from 'vue'
 import LIST from '../../../store/modules/listData/listDataTypes'
 export default defineComponent({

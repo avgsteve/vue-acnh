@@ -4,7 +4,7 @@
     <!-- <Popup :prop_showPopup="data_popupDisplay" @popupClosed="popupClosed" /> -->
   </div>
 </template>
-<script lang="ts">
+<script  >
 import { defineComponent } from 'vue'
 // import Popup from './AddToListBtn/Popup.vue'
 import GLOBALSTATE from './../../../store/modules/globalState/globalStateTypes'
@@ -18,7 +18,7 @@ export default defineComponent({
     // 並透過 openPopupList method 去更新 store 裡面選取的資料
     prop_itemData: { type: Object, required: true }
   },
-  data(dataObj: any) {
+  data() {
     return {
       dataObj: null
     }

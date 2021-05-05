@@ -81,7 +81,7 @@ export default defineComponent({
     // this.$store.dispatch(`creaturesData/${CREATURES.SET_CREATURES_CATEGORIES}`)
     axios
       .get(
-        `/api/ac/creatures/categories`,
+        `/${import.meta.env.VITE_API_ENDPOINT}/ac/creatures/categories`,
         // 'http://localhost:3003/api/items',
         {
           headers: {
@@ -114,7 +114,9 @@ export default defineComponent({
       // 更新要傳給 ItemPageResults 組件的 props  ( this.data_selectedTag)
       this.data_selectedTag = selectedTag
 
-      let url = `/api/ac/items/detailed-data?sourceSheet=${selectedCategory}&tag=${selectedTag}`
+      let url = `/${
+        import.meta.env.VITE_API_ENDPOINT
+      }/ac/items/detailed-data?sourceSheet=${selectedCategory}&tag=${selectedTag}`
       // console.log('axios要請求的網址: ', url)
 
       this.axios.get(url).then((response) => {
@@ -136,7 +138,7 @@ export default defineComponent({
 
       axios
         .get(
-          `/api/ac/creatures?category=${category}`,
+          `/${import.meta.env.VITE_API_ENDPOINT}/ac/creatures?category=${category}`,
           // 'http://localhost:3003/api/items',
           {
             headers: {

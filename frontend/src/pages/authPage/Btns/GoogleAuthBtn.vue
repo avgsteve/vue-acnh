@@ -6,7 +6,7 @@
     :prop_loadingStatus="data_isLoadingAuthData"
   />
 </template>
-<script lang="ts">
+<script  >
 import { defineComponent } from 'vue'
 import BtnFrame from './BtnFrame.vue'
 import USER from './../../../../store/modules/user/userTypes'
@@ -24,7 +24,7 @@ export default defineComponent({
       default: 'login'
     }
   },
-  data(dataObj: any) {
+  data() {
     return {
       data_btnImg: '/src/assets/img/icon/oauth/google-login-icon-bubble.svg',
       data_isLoadingAuthData: false
@@ -64,7 +64,7 @@ export default defineComponent({
 
         this.axios({
           method: 'POST',
-          url: `/api/auth/signup/google`,
+          url: `/${import.meta.env.VITE_API_ENDPOINT}/auth/signup/google`,
           data: {
             idToken
           }

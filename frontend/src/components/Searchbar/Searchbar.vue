@@ -38,7 +38,7 @@
     </form>
   </div>
 </template>
-<script lang="ts">
+<script  >
 import { defineComponent } from 'vue'
 import { Toast } from 'vant'
 
@@ -49,16 +49,7 @@ export default defineComponent({
   components: {},
   props: { absolutePostion: Boolean, prop_expandSearchBar: Boolean },
   setup: () => {},
-  data(
-    dataObj: any
-  ): {
-    searchInputValue: string
-    toShowAction: boolean
-    showClearIcon: boolean
-    searchInputFocused: boolean
-    dataObj: any
-    autofocus: boolean
-  } {
+  data() {
     return {
       searchInputValue: '',
       searchInputFocused: false,
@@ -117,7 +108,7 @@ export default defineComponent({
     onTyping() {
       // console.log('onTyping method: ...')
     },
-    onCancel(): void {
+    onCancel() {
       // console.log('search cancelled')
       Toast('取消')
     },
@@ -127,7 +118,7 @@ export default defineComponent({
       this.$emit('focused', true)
       console.log('focused')
     },
-    onClear(): void {
+    onClear() {
       this.searchInputValue = ''
       console.log('cleared')
       console.log('this.searchInputFocused:', this.searchInputFocused)

@@ -35,7 +35,7 @@
     </div>
   </div>
 </template>
-<script lang="ts">
+<script  >
 import { Toast } from 'vant'
 import { computed, defineComponent, reactive, ref, watch } from 'vue'
 import CreaturesFlexboxViewControl from './creaturesFlexboxViewControl.vue'
@@ -98,7 +98,7 @@ export default defineComponent({
       default: []
     }
   },
-  data(dataObj: any) {
+  data(  ) {
     return {
       filterText: ''
     }

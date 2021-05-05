@@ -5,7 +5,7 @@
     <van-radio class="radioBtn" name="wishList"> {{ $t(`ui.list.wishList`) }}</van-radio>
   </van-radio-group>
 </template>
-<script lang="ts">
+<script  >
 import { defineComponent } from 'vue'
 import LIST from './../../../store/modules/listData/listDataTypes'
 export default defineComponent({
@@ -16,7 +16,7 @@ export default defineComponent({
     prop1: { type: Number },
     prop2: { type: String }
   },
-  data(dataObj: any) {
+  data() {
     return {
       data_checked: 'collection'
     }

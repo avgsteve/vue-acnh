@@ -145,18 +145,22 @@ export default defineComponent({
           3.讀取完資料之後再開啟ItemCard彈窗          
       */
 
-      this.axios.get(`/api/ac/items/detailed-data?name=${nameOfClickedItem}`).then((response) => {
-        const data = response.data
-        data.idForTranslation = id // 加上 .idForTranslation 屬性
-        // console.log('API取回的資料:', data)
-        this.data_cardSettingAndData.data = data
-        this.data_cardSettingAndData.showCard = true
+      this.axios
+        .get(
+          `/${import.meta.env.VITE_API_ENDPOINT}/ac/items/detailed-data?name=${nameOfClickedItem}`
+        )
+        .then((response) => {
+          const data = response.data
+          data.idForTranslation = id // 加上 .idForTranslation 屬性
+          // console.log('API取回的資料:', data)
+          this.data_cardSettingAndData.data = data
+          this.data_cardSettingAndData.showCard = true
 
-        setTimeout(() => {
-          // 把 ItemCard 的讀取動畫移除
-          this.data_cardSettingAndData.setting.showLoader = false
-        }, 400)
-      })
+          setTimeout(() => {
+            // 把 ItemCard 的讀取動畫移除
+            this.data_cardSettingAndData.setting.showLoader = false
+          }, 400)
+        })
     }
   }
 })

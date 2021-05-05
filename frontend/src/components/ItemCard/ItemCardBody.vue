@@ -4,7 +4,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script  >
 import {
   defineComponent
   // ref
@@ -17,7 +17,7 @@ export default defineComponent({
     // return { show }
   },
   props: {},
-  data(dataObj: any) {
+  data() {
     return {
       dataObj: null
     }

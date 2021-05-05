@@ -32,7 +32,7 @@
     </div>
   </van-popup>
 </template>
-<script lang="ts">
+<script  >
 import { defineComponent } from 'vue'
 import GLOBALSTATE from '../../../store/modules/globalState/globalStateTypes'
 // import LIST from '../../../store/modules/listData/listDataTypes'
@@ -48,7 +48,7 @@ export default defineComponent({
   components: { SelectedItem, CurrentLists, CurrentListsType },
   setup: () => {},
   props: {},
-  data(dataObj: any) {
+  data() {
     return {
       dataObj: null,
       data_showPopup: false,

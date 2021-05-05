@@ -1,7 +1,7 @@
 <template>
   <div> </div>
 </template>
-<script lang="ts">
+<script  >
 import { defineComponent } from 'vue'
 export default defineComponent({
   name: '',
@@ -11,7 +11,7 @@ export default defineComponent({
     prop1: { type: Number },
     prop2: { type: String }
   },
-  data(dataObj: any) {
+  data() {
     return {
       dataObj: null
     }

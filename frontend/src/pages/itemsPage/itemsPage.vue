@@ -28,7 +28,7 @@
     </SectionComponent>
   </div>
 </template>
-<script lang="ts">
+<script>
 import { defineComponent } from 'vue'
 import SectionComponent from './../LAYOUT/sectionComponent.vue'
 import AppIcon from '../../components/Icons/AppIcon.vue'
@@ -195,7 +195,9 @@ export default defineComponent({
         // 顯示讀取 tag 的 preloader 動畫
         this.data_tagDataIsLoading = true
 
-        let url = `/api/ac/items/detailed-data/categories/tags/first-doc?category=${selectedCategory}`
+        let url = `${
+          import.meta.env.VITE_API_ENDPOINT
+        }/ac/items/detailed-data/categories/tags/first-doc?category=${selectedCategory}`
 
         // console.log('axios要請求的網址: ', url)
 
@@ -232,7 +234,7 @@ export default defineComponent({
   mounted() {},
   beforeUnmount() {},
   methods: {
-    getDataOfSelectedTag(selectedTag: string) {
+    getDataOfSelectedTag() {
       // console.log('data_selectedTag已更新: ', selectedTag)
       const selectedCategory = this.data_selectedCategory
       // console.log({ selectedCategory, selectedTag })
@@ -247,7 +249,9 @@ export default defineComponent({
       // 更新要傳給 ItemPageResults 組件的 props  ( this.data_selectedTag)
       this.data_selectedTag = selectedTag
 
-      let url = `/api/ac/items/detailed-data?sourceSheet=${selectedCategory}&tag=${selectedTag}`
+      let url = `/${
+        import.meta.env.VITE_API_ENDPOINT
+      }/ac/items/detailed-data?sourceSheet=${selectedCategory}&tag=${selectedTag}`
       // console.log('axios要請求的網址: ', url)
 
       this.axios.get(url).then((response) => {

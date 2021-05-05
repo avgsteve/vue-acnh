@@ -6,7 +6,7 @@
     <div class="bottomSpace"></div>
   </div>
 </template>
-<script lang="ts">
+<script  >
 import { defineComponent } from 'vue'
 import Toolbar from '../../components/Toolbar/Toolbar.vue'
 import IndexBar from '../../components/IndexBar/IndexBar.vue'

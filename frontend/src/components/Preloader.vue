@@ -14,7 +14,7 @@
     </div>
   </div>
 </template>
-<script lang="ts">
+<script  >
 import { defineComponent } from 'vue'
 export default defineComponent({
   name: 'Preloader',
@@ -26,7 +26,7 @@ export default defineComponent({
       default: true
     }
   },
-  data(dataObj: any) {
+  data() {
     return {
       dataObj: null
     }
