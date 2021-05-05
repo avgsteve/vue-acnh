@@ -78,7 +78,7 @@ export default defineComponent({
     // this.$store.dispatch(`recipesData/${RECIPES.SET_recipes_CATEGORIES}`)
     axios
       .get(
-        '/api/ac/recipes/categories',
+        `/api/ac/recipes/categories`,
         // 'http://localhost:3003/api/items',
         {
           headers: {

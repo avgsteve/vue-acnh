@@ -120,33 +120,33 @@ router.beforeEach(function (to, from, next) {
   var ifUserIsAuthenticated = _store.store.getters["user/".concat(_userTypes["default"].GET_IF_AUTHENTICATED)];
 
   if (ifListsHasBeenUpdated // 清單被更新過
-  && !ifListsHasBeenUploaded // 清單未被上傳到資料庫
-  && ifUserIsAuthenticated // 使用者已經登入
+    && !ifListsHasBeenUploaded // 清單未被上傳到資料庫
+    && ifUserIsAuthenticated // 使用者已經登入
   ) {
-      _vant.Toast.loading({
-        message: '自動儲存清單中...'
-      });
+    _vant.Toast.loading({
+      message: '自動儲存清單中...'
+    });
 
-      var listDataFromLocalStorage = _store.store.getters["listData/".concat(_listDataTypes["default"].GET_CREATED_LISTS)];
+    var listDataFromLocalStorage = _store.store.getters["listData/".concat(_listDataTypes["default"].GET_CREATED_LISTS)];
 
-      _axios["default"].post('/api/me/listData', {
-        listData: JSON.stringify(listDataFromLocalStorage)
-      }).then(function (response) {
-        console.log('response: ', response); // 透過 SET_LIST_IS_UPLOADED_AND_NOT_UPDATED: 
-        // 同時 SET_FLAG_IF_DATA_IS_UPDATED 設為 false 和把 SET_FLAG_IF_DATA_IS_UPLOADED 設為 true，表示已經把修改過的清單資料上傳到資料庫中
+    _axios["default"].post("/api/me/listData", {
+      listData: JSON.stringify(listDataFromLocalStorage)
+    }).then(function (response) {
+      console.log('response: ', response); // 透過 SET_LIST_IS_UPLOADED_AND_NOT_UPDATED: 
+      // 同時 SET_FLAG_IF_DATA_IS_UPDATED 設為 false 和把 SET_FLAG_IF_DATA_IS_UPLOADED 設為 true，表示已經把修改過的清單資料上傳到資料庫中
 
-        _store.store.dispatch("listData/".concat(_listDataTypes["default"].SET_LIST_IS_UPLOADED_AND_NOT_UPDATED));
+      _store.store.dispatch("listData/".concat(_listDataTypes["default"].SET_LIST_IS_UPLOADED_AND_NOT_UPDATED));
 
-        setTimeout(function () {
-          _vant.Toast.success({
-            message: '清單已經保存到雲端資料庫!'
-          });
-        }, 300);
-        return setTimeout(function () {
-          next();
-        }, 600);
-      });
-    }
+      setTimeout(function () {
+        _vant.Toast.success({
+          message: '清單已經保存到雲端資料庫!'
+        });
+      }, 300);
+      return setTimeout(function () {
+        next();
+      }, 600);
+    });
+  }
 
   next();
 });

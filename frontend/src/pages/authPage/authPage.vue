@@ -45,7 +45,7 @@ export default defineComponent({
 
     if (!this.computed_ifUserIsLoggedIn) {
       axios
-        .get('/api/user/currentUser?getUserData="true"', {
+        .get(`/api/user/currentUser?getUserData="true"`, {
           headers: {
             CLIENT_REQ: 'Vue.js AUTH PAGE: CHECK IF USER HAS LOGGED IN'
           }

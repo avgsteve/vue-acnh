@@ -81,7 +81,7 @@ export default defineComponent({
     // this.$store.dispatch(`clothingData/${RECIPES.SET_clothing_CATEGORIES}`)
     axios
       .get(
-        '/api/ac/clothing/categories',
+        `/api/ac/clothing/categories`,
         // 'http://localhost:3003/api/items',
         {
           headers: {

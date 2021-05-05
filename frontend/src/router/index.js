@@ -117,7 +117,7 @@ router.beforeEach((to, from, next) => {
       `listData/${LIST.GET_CREATED_LISTS}`];
 
     axios.post(
-      '/api/me/listData',
+      `/api/me/listData`,
       { listData: JSON.stringify(listDataFromLocalStorage) })
       .then(response => {
         console.log('response: ', response);

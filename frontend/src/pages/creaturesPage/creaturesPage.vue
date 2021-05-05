@@ -81,7 +81,7 @@ export default defineComponent({
     // this.$store.dispatch(`creaturesData/${CREATURES.SET_CREATURES_CATEGORIES}`)
     axios
       .get(
-        '/api/ac/creatures/categories',
+        `/api/ac/creatures/categories`,
         // 'http://localhost:3003/api/items',
         {
           headers: {
