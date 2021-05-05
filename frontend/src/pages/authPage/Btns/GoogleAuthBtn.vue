@@ -64,7 +64,7 @@ export default defineComponent({
 
         this.axios({
           method: 'POST',
-          url: `/${import.meta.env.VITE_API_ENDPOINT}/auth/signup/google`,
+          url: `${import.meta.env.VITE_API_ENDPOINT}/auth/signup/google`,
           data: {
             idToken
           }

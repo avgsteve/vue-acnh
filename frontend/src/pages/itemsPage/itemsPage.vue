@@ -249,7 +249,7 @@ export default defineComponent({
       // 更新要傳給 ItemPageResults 組件的 props  ( this.data_selectedTag)
       this.data_selectedTag = selectedTag
 
-      let url = `/${
+      let url = `${
         import.meta.env.VITE_API_ENDPOINT
       }/ac/items/detailed-data?sourceSheet=${selectedCategory}&tag=${selectedTag}`
       // console.log('axios要請求的網址: ', url)

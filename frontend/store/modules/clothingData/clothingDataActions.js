@@ -6,7 +6,8 @@ export default {
   async [CLOTHING.SET_CLOTHING_CATEGORIES]({ commit, dispatch }) {
     console.log('發出dispatch: FETCH_CLOTHING_CATEGORIES');
     return axios.get(
-      '/api/ac/clothing/categories',
+      `${import.meta.env.VITE_API_ENDPOINT
+      }/ac/clothing/categories`,
       // 'http://localhost:3003/api/items',
       {
         headers: {

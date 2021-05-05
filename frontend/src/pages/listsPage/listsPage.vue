@@ -147,7 +147,7 @@ export default defineComponent({
 
       this.axios
         .get(
-          `/${import.meta.env.VITE_API_ENDPOINT}/ac/items/detailed-data?name=${nameOfClickedItem}`
+          `${import.meta.env.VITE_API_ENDPOINT}/ac/items/detailed-data?name=${nameOfClickedItem}`
         )
         .then((response) => {
           const data = response.data

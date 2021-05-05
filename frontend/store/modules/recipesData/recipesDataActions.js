@@ -6,7 +6,8 @@ export default {
   async [RECIPES.SET_RECIPES_CATEGORIES]({ commit, dispatch }) {
     // console.log('發出dispatch: FETCH_RECIPES_CATEGORIES');
     return axios.get(
-      '/api/ac/recipes/categories',
+      `${import.meta.env.VITE_API_ENDPOINT
+      }/ac/recipes/categories`,
       // 'http://localhost:3003/api/items',
       {
         headers: {

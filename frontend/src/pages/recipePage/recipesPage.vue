@@ -78,7 +78,7 @@ export default defineComponent({
     // this.$store.dispatch(`recipesData/${RECIPES.SET_recipes_CATEGORIES}`)
     axios
       .get(
-        `/${import.meta.env.VITE_API_ENDPOINT}/ac/recipes/categories`,
+        `${import.meta.env.VITE_API_ENDPOINT}/ac/recipes/categories`,
         // 'http://localhost:3003/api/items',
         {
           headers: {
@@ -117,7 +117,7 @@ export default defineComponent({
       // 更新要傳給 ItemPageResults 組件的 props  ( this.data_selectedTag)
       this.data_selectedTag = selectedTag
 
-      let url = `/${
+      let url = `${
         import.meta.env.VITE_API_ENDPOINT
       }/ac/items/detailed-data?sourceSheet=${selectedCategory}&tag=${selectedTag}`
       // console.log('axios要請求的網址: ', url)
@@ -139,7 +139,7 @@ export default defineComponent({
 
       axios
         .get(
-          `/${import.meta.env.VITE_API_ENDPOINT}/ac/recipes?category=${category}`,
+          `${import.meta.env.VITE_API_ENDPOINT}/ac/recipes?category=${category}`,
           // 'http://localhost:3003/api/items',
           {
             headers: {

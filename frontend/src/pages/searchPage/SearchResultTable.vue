@@ -343,7 +343,7 @@ export default defineComponent({
       // 開啟對話框
 
       this.axios
-        .get(`/${import.meta.env.VITE_API_ENDPOINT}/ac/items/detailed-data?name=${itemClicked}`)
+        .get(`${import.meta.env.VITE_API_ENDPOINT}/ac/items/detailed-data?name=${itemClicked}`)
         .then((response) => {
           // 讀取完資料之後再開啟ItemCard彈窗
           this.data_cardSettingAndData.showCard = true

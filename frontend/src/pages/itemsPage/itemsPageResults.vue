@@ -131,7 +131,7 @@ export default defineComponent({
       this.data_cardSettingAndData.showCard = true
 
       this.axios
-        .get(`/${import.meta.env.VITE_API_ENDPOINT}/ac/items/detailed-data?name=${itemName}`)
+        .get(`${import.meta.env.VITE_API_ENDPOINT}/ac/items/detailed-data?name=${itemName}`)
         .then((response) => {
           const data = response.data
           // console.log('item fetched. data: ', data)

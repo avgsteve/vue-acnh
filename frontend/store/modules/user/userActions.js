@@ -29,7 +29,7 @@ export default {
   [USER.GET_CURRENT_USER_DATA_WITH_COOKIE]({ commit, dispatch }, payload) {
 
     return axios
-      .get('/api/me/listData')
+      .get(`${import.meta.env.VITE_API_ENDPOINT}/me/listData`)
       .then((response) => {
         const currentUser = response.data;
         console.log('ACTION :GET_CURRENT_USER_DATA_WITH_COOKIE 取得的資料', currentUser);

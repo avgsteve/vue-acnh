@@ -68,7 +68,7 @@ export default defineComponent({
       const confirmToLogout = window.confirm(`${this.$t('ui.auth.confirmToLogout')}`)
       if (confirmToLogout) {
         axios
-          .get(`/${import.meta.env.VITE_API_ENDPOINT}/auth/logout`, {
+          .get(`${import.meta.env.VITE_API_ENDPOINT}/auth/logout`, {
             headers: {
               CLIENT_REQ: 'Vue.js AUTH PAGE: CHECK IF USER HAS LOGGED IN'
             }

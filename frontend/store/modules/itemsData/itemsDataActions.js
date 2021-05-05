@@ -4,9 +4,17 @@ import LANGUAGE from './../languageSetting/languageSettingTypes';
 
 export default {
 
+
+
   async [ITEMS.FETCH_TRANSLATED_ITEM_DATA]({ commit, dispatch }) {
+
+    const url = `${import.meta.env.VITE_API_ENDPOINT
+      }/ac/items/translation-data`;
+
+    console.log('要抓資料的URL', url);
+
     return axios.get(
-      '/api/ac/items/translation-data',
+      url,
       // 'http://localhost:3003/api/items',
       {
         headers: {
@@ -214,7 +222,8 @@ export default {
     // console.log('執行action: SET_ITEM_DETAILS_CATEGORIES');
 
     return axios.get(
-      '/api/ac/items/detailed-data/categories',
+      `${import.meta.env.VITE_API_ENDPOINT
+      }/ac/items/detailed-data/categories`,
       // 'http://localhost:3003/api/items',
       {
         headers: {

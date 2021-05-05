@@ -38,7 +38,7 @@ export default defineComponent({
     // // this.$store.dispatch(`clothingData/${RECIPES.SET_clothing_CATEGORIES}`)
     console.log('this.data_isLoadingUserData:', this.data_isLoadingUserData)
     axios
-      .get(`/${import.meta.env.VITE_API_ENDPOINT}/me`, {
+      .get(`${import.meta.env.VITE_API_ENDPOINT}/me`, {
         headers: {
           CLIENT_REQ: 'Vue.js-fetch data from ME router'
         }

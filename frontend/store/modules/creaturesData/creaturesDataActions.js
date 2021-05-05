@@ -6,7 +6,8 @@ export default {
   async [CREATURES.SET_CREATURES_CATEGORIES]({ commit, dispatch }) {
     console.log('發出dispatch: FETCH_CREATURES_CATEGORIES');
     return axios.get(
-      '/api/ac/creatures/categories',
+      `${import.meta.env.VITE_API_ENDPOINT
+      }/ac/creatures/categories`,
       // 'http://localhost:3003/api/items',
       {
         headers: {
