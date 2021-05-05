@@ -46,7 +46,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import DownNavbar from './components/Navbar/navbarContainer.vue'
 import Toolbar from './components/Toolbar/Toolbar.vue'
 import PopUpList from './components/List/PopupLists.vue'
@@ -67,13 +67,7 @@ export default defineComponent({
   },
   setup() {},
   beforeCreate() {},
-  data(): {
-    // languagesOptionsMenu: Object[]
-    // localOptionValue: string
-    isLoadingData: boolean
-    data_showNavbar: boolean
-    data_popupDisplay: boolean
-  } {
+  data() {
     return {
       isLoadingData: true,
       data_showNavbar: true,
@@ -81,6 +75,12 @@ export default defineComponent({
     }
   },
   mounted() {
+    console.log(
+      '檢查環境變數: VITE_API_ENDPOINT + import.meta.env',
+      `${import.meta.env.VITE_API_ENDPOINT}`
+    )
+    console.log('檢查環境變數: API_ENDPOINT + process.env.API_ENDPOINT ', process.env.API_ENDPOINT)
+
     // #1 檢查客戶端瀏覽器目前的語言，並連帶設定i18n的語言設定
     let userLang = navigator.language
     if (userLang.toLowerCase().includes('tw')) this.$i18n.locale = 'zhTW'
