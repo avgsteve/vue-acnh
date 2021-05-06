@@ -1,42 +1,27 @@
 <template>
   <div id="rootContainer">
-    <div class="loadingContainer" v-if="isLoadingData">
-      <div class="loadingContainer__background">
-        <van-loading
-          class="loader"
-          color="#dfdfdf"
-          size="48px"
-          vertical
-          v-if="isLoadingData"
-          type="spinner"
-        >
-          Loading
-        </van-loading>
-      </div>
-    </div>
+    <AppStartPreloader :prop_isLoadingData="isLoadingData" />
+
     <van-row id="appContainer" justify="center" v-if="!isLoadingData">
       <van-col span="20" class="mobile-viewport-controll">
-        <!-- mainContainer -->
         <van-row>
           <van-col span="20" class="mainContainer">
             <div class="pageContent">
+              <!-- 透過 Vue Router替換不同 path 的內容 -->
               <router-view v-slot="slotProps">
-                <!-- <transition name="route_animation" mode="out-in"> -->
                 <component :is="slotProps.Component"></component>
-                <!-- </transition> -->
               </router-view>
             </div>
           </van-col>
         </van-row>
 
-        <!-- navContainer -->
         <van-row justify="center" v-if="computed_showNavbar">
           <van-col id="navContainer" span="20">
             <DownNavbar></DownNavbar>
           </van-col>
         </van-row>
       </van-col>
-      <!-- List popup -->
+      <!-- List popup 控制將物件加入清單的彈窗的內容 -->
       <PopUpList
         id="PopUpList"
         :prop_showPopup="computed_showListPopup"
@@ -50,9 +35,9 @@
 import DownNavbar from './components/Navbar/navbarContainer.vue'
 import Toolbar from './components/Toolbar/Toolbar.vue'
 import PopUpList from './components/List/PopupLists.vue'
+import AppStartPreloader from './components/Loaders/AppStartPreloader.vue'
 
 import { defineComponent } from 'vue'
-import { useStore, mapState, mapActions, mapMutations } from 'vuex'
 import ITEMS from './../store/modules/itemsData/itemsDataTypes'
 import USER from './../store/modules/user/userTypes'
 import GLOBALSTATE from './../store/modules/globalState/globalStateTypes'
@@ -63,7 +48,8 @@ export default defineComponent({
   components: {
     DownNavbar,
     Toolbar,
-    PopUpList
+    PopUpList,
+    AppStartPreloader
   },
   setup() {},
   beforeCreate() {},
@@ -71,14 +57,15 @@ export default defineComponent({
     return {
       isLoadingData: true,
       data_showNavbar: true,
-      data_popupDisplay: false
+      data_displayPopUpForList: false
     }
   },
   mounted() {
-    console.log(
-      '檢查環境變數: VITE_API_ENDPOINT + import.meta.env',
-      `${import.meta.env.VITE_API_ENDPOINT}`
-    )
+    // 除錯用的 log
+    // console.log(
+    //   '檢查環境變數: VITE_API_ENDPOINT + import.meta.env',
+    //   `${import.meta.env.VITE_API_ENDPOINT}`
+    // )
 
     // #1 檢查客戶端瀏覽器目前的語言，並連帶設定i18n的語言設定
     let userLang = navigator.language
@@ -86,9 +73,10 @@ export default defineComponent({
     if (userLang.toLowerCase().includes('cn')) this.$i18n.locale = 'zhCN'
     if (userLang.toLowerCase().includes('en')) this.$i18n.locale = 'en'
 
-    console.log('App has been mounted!')
+    // 從後端讀取翻譯資料
     this.$store.dispatch(`itemsData/${ITEMS.FETCH_TRANSLATED_ITEM_DATA}`)
-    // #2 從 localStorage 讀取 list data 資料
+
+    // #2 從 localStorage 讀取清單資料
     this.$store.dispatch(`listData/${LIST.SET_LIST_DATA_FROM_LOCALSTORAGE}`)
 
     // #3 透過 lastLoggedInTime 變數檢查使用者是否有登入過，藉由Cookie向API請求使用者資料
@@ -101,7 +89,8 @@ export default defineComponent({
     }
   },
   computed: {
-    // 要讓 watch function 監看資料讀取是否成功
+    // 透過 computed value 綁住 Store的資料物件，
+    // 讓 App.vue 的 watcher 監看資料讀取是否成功
     computed_itemsDataForQuery() {
       return this.$store.getters[`itemsData/${ITEMS.GET_ITEMS_FOR_QUERY}`]
     },
@@ -109,10 +98,12 @@ export default defineComponent({
       const navbarDisplay = this.$store.getters[`globalStatus/${GLOBALSTATE.GET_NAVBAR_STATUS}`]
       return navbarDisplay
     },
+    // 控制將物件加入清單的彈窗的global variable
     computed_showListPopup() {
       const popupDisplay = this.$store.getters[`globalStatus/${GLOBALSTATE.GET_LIST_POPUP_STATUS}`]
       return popupDisplay
     },
+    // 控制將物件加入清單的彈窗的內容
     computed_dataForListPopup() {
       const dataForListPopup = this.$store.getters[
         `globalStatus/${GLOBALSTATE.GET_LIST_POPUP_DATA}`
@@ -121,14 +112,19 @@ export default defineComponent({
     }
   },
   watch: {
+    // 要先讀取完成全部的資料後才能進行Store裡面的item設定分類資料
+    // 接著再移除讀取畫面
     computed_itemsDataForQuery: function (_new, _old) {
-      // 要先讀取完成全部的資料後才能進行設定分類資料
-      // 跟移除讀取畫面
       this.$store.dispatch(`itemsData/${ITEMS.SET_ITEM_CATEGORIES}`)
-      this.isLoadingData = false
+      this.isLoadingData = false // 移除讀取 preloader
     },
-    data_popupDisplay() {
-      this.$store.dispatch(`globalStatus/${GLOBALSTATE.SET_NAVBAR_STATUS}`, !this.data_popupDisplay)
+    // 控制將物件加入清單的彈窗
+    data_displayPopUpForList() {
+      this.$store.dispatch(
+        `globalStatus/${GLOBALSTATE.SET_NAVBAR_STATUS}`,
+        !this.data_displayPopUpForList
+        // App.vue載入的時候要先關閉，避免有任何狀況開啟造成畫面被遮住
+      )
     }
   }
 })
