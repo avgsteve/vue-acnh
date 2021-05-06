@@ -91,7 +91,6 @@ export default defineComponent({
         this.data_isLoadingAuthData = false
         if (error.error === 'popup_closed_by_user') Toast.fail('取消登入')
         if (error.error !== 'popup_closed_by_user') Toast.fail('登入失敗，請稍後再試')
-        window.alert(error)
       }
     }
   }
