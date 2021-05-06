@@ -10,3 +10,5 @@ backend/package-lock.json
 backend/package-lock.json
 backend/src/routes/auth/oauth2.keys.json
 frontend/.env.production
+ssl/
+cert.crt
