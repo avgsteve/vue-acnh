@@ -42,6 +42,18 @@
     <SectionComponent :props_title="'Updates'" :props_subtitle="''">
       <ul class="updatesContainer">
         <li>
+          <div> Github </div>
+          <div>
+            <a
+              href="https://github.com/avgsteve/vue-acnh"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Vue - Animal Crossing</a
+            >
+          </div>
+        </li>
+        <li>
           <div> 1.</div>
           <div> 20210503 </div>
           <div> 更新登入功能 </div>

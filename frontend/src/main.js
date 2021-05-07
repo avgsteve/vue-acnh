@@ -15,10 +15,9 @@ import 'vant/lib/index.css';
 // vant定制主题 ref: https://blog.csdn.net/qq_32555123/article/details/105513209
 
 import router from './router';
-// import 'element-plus/lib/theme-chalk/index.css'
 import App from './App.vue';
 import './index.css';
-import '@vant/touch-emulator'; // convert "mouse" event to "touch"
+import '@vant/touch-emulator'; // convert "mouse" event to "touch" 
 
 import axios from 'axios';
 import VueAxios from 'vue-axios';
@@ -31,20 +30,16 @@ const gAuthOptions = {
 
 // Vue3 + i18n 設定
 const i18n = createI18n({
-  // legacy: false,
   locale: 'en',
   messages: {
     en, zhTW, zhCN
   }
 });
-// 透過 frontend\src\components\Navbar\languageOption.vue 的 methods: onSelect() 修改 
+// 透過 frontend\src\components\Navbar\languageOption.vue 的 methods: onSelect() 修改i18n的語言
 // const localeCode = store.getters.getCurrentLocale;
 // console.log('localeCode: ', localeCode);
 
-
-// import 'element-plus/lib/theme-chalk/index.css';
 createApp(App)
-  // .use(ElementPlus)
   .use(store)
   .use(Vant)
   .use(VueAxios, axios)

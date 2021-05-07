@@ -7,11 +7,11 @@ export default {
   plugins: [vue()],
   server: {
     proxy: {
-      // '/api': {
-      //   target: 'http://localhost:3003/api/',
-      //   changeOrigin: true,
-      //   rewrite: (path) => path.replace(/^\/api/, '')
-      // }
+      '/api': {
+        target: 'http://localhost:3003/api/',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '')
+      }
       // // with RegEx
       // '^/fallback/.*': {
       //   target: 'http://jsonplaceholder.typicode.com',
