@@ -1,4 +1,10 @@
-# 程式碼 & 說明
+# 說明
+
+發布環境 & 相關開發工具:
+
+- 平台: DigitalOcean Droplet Ubunt20
+- 後端: Node.js, MongoDB, Redis, TypeScript (部分程式碼有用到)
+- 前端: Vue.js , Vant UI, vue i18n
 
 ## Vite
 
@@ -54,4 +60,23 @@ npm install --save --legacy-peer-deps eslint-config-prettier
 https://lmiller1990.github.io/electic/posts/20200406_webpack_for_vue_3.html
 <br>但是會跟 vite 的設定有衝突，且目前還用不到 webpack ，所以先不加入 package.json
 
-### 3. Deploy 到雲端主機後 Google Auth 無法使用，正在找問題中
+### 3. 20210507
+
+##### -Deploy 到雲端主機後，手機板的 Google Auth 無法使用，正在找問題中
+
+解決: 發現是 Google OAuth Client 的設定問題
+https://console.cloud.google.com/apis/credentials/oauthclient
+
+![截圖](https://github.com/avgsteve/vue-acnh/blob/main/screenshot/Google%20Oauth%20%E7%9A%84%E5%95%8F%E9%A1%8C.jpg?raw=true)
+
+dev tool 的 console 出現 {error: "idpiframe_initialization_failed ... } 的錯誤訊息
+
+原本設定的是 https://www.animal-crossing.me 的 URI
+結果瀏覽器開啟的是 https://animal-crossing.me
+開啟 dev tool 的時候發現 console 有顯示錯誤，才知道少了 www 的主機位置標示也會讓 OAuth 無法執行。不過改成下面圖示之後還是有問題，因為 Google Auth API 會讀取到瀏覽器的舊 Cookie 內容，所以還要把瀏覽器的 Cookie 清除掉之後重新整理頁面才可以正常的執行 OAuth
+
+![截圖](https://github.com/avgsteve/vue-acnh/blob/main/screenshot/Google%20Oauth%20%E7%9A%84%E5%95%8F%E9%A1%8C-%E8%A7%A3%E6%B1%BA.jpg?raw=true)
+
+不過奇怪的是桌機板的 Chrome 沒有這個問題，而是在手機板的 Chrome 出現這個問題。
+
+搞了半天還以為是 Vue 或是自己寫的程式碼出錯，紀錄一下，至少是把問題解決了 🎆
